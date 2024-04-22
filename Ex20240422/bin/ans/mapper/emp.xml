@@ -7,7 +7,8 @@
 	  <resultMap type="ans.vo.EmpVO" id="mm">
 	  
 	  	<id property="empno" column="empno"/>
-	  	<collection property="e_list" ofType="ans.vo.EmpVO" select="emp.emp_list" column="empno"/>
+	  	<collection property="e_list" ofType="ans.vo.EmpVO" select="emp.emp_list" column="{empno=empno,deptno=deptno}"/>
+	  	<!-- 두 개 이상의 인자를 보낼 시 column="{empno, deptno}" -->
 	  	
 	  </resultMap>
   
@@ -22,7 +23,8 @@
 	  	
 	  	
 	  	<!-- 부서장의 사번을 인자로 받아서 사원들을 검색하는 기능 -->
-	  	<select id="emp_list" parameterType="String" resultType="ans.vo.EmpVO">
+	  	<!-- 두 개 이상의 인자를 받을 시에는 map으로 받는다.  -->
+	  	<select id="emp_list" parameterType="Map" resultType="ans.vo.EmpVO">
 	  		SELECT *
 			FROM emp
 			WHERE mgr = #{empno}
