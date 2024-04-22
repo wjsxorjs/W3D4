@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="dept">
+  
+	  <resultMap type="pm.vo.DeptVO" id="m1">
+	  
+	  	<!--
+	  	<result property="deptno" column="deptno"/>
+	  	-->
+	  	<id property="deptno" column="deptno"/> <!-- 기본키를 의미한다 -->
+	  	<collection property="e_list" javaType="java.util.List" ofType="pm.vo.EmpVO" select="emp.emp_list" column="deptno"/>
+	  </resultMap>
+  
+  
+	  	<!-- 모든 부서들을 반환한다. -->
+	  	<select id="all" resultMap="m1">
+	  		select *
+	  		from dept
+	  	</select>
+	  
+  </mapper>
