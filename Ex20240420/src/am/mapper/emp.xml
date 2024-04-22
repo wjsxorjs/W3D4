@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+
+
+	<resultMap type="am.vo.EmpVo" id="m1">
+		<association property="dvo" javaType="am.vo.DeptVO" select="dept.get_dept" column="deptno" />
+	</resultMap>
+
+
+	<!-- 모든 사원정보를 반환하는 기능: 결과는 복합적인 결과인 m1이라는 resultMap으로 해야한다.-->
+	<select id="all"  resultMap="m1">
+		select *
+    	from emp
+	</select>
+</mapper>
