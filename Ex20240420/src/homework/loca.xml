@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="loca">
+  
+  <!-- 검색 및 전체기능 -->
+  <select id="search" parameterType="Map" 
+  resultType="homework.LocaVO">
+  	SELECT * FROM locations
+  	<where>
+  		<!-- 인자로 넘어온 Map에 empno라는 키가 있다면
+  			사번검색을 수행하는 SQL문을 지정한다. -->
+  		<if test="loc_code != null">
+  			loc_code = #{loc_code}
+  		</if>
+  		<if test="city != null">
+  			city LIKE CONCAT('%',#{city},'%')
+  		</if>
+  	</where>
+  </select>
+  
+     <!-- 부서 추가 : MyFrame의 addLoca함수에서 호출함 -->
+  <insert id="add" parameterType="homework.LocaVO">
+  	<if test="loc_code!=null and city != null">
+	  	INSERT INTO locations(loc_code, city)
+	  	VALUES(#{loc_code}, #{city})
+  	</if>
+  </insert>
+  
+  
+</mapper>
+
+
+
+
+
