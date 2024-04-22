@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import pm.vo.DeptVO;
 import pm.vo.EmpVO;
+import pm.vo.LocaVO;
 
 public class Main_Ex1 {
 
@@ -28,8 +29,11 @@ public class Main_Ex1 {
 		
 		for(int i=0; i<d_list.size();i++) {
 			DeptVO dvo = d_list.get(i);
+			
+			LocaVO lvo = dvo.getLvo();
+			
 			List<EmpVO> e_list = dvo.getE_list();
-			System.out.printf("부서코드: %-3s 부서명: %-11s (%-2d명) \r\n",dvo.getDeptno(),dvo.getDname(),e_list.size());
+			System.out.printf("부서코드: %-3s 부서명: %-11s 근무지: %-10s (%-2d명) \r\n",dvo.getDeptno(),dvo.getDname(),lvo.getCity(),e_list.size());
 			System.out.println("------------------------------------------");
 			// 구성원들 출력하는 반복문
 			for(int j=0; j<e_list.size();j++) {

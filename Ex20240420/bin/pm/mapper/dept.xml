@@ -10,7 +10,10 @@
 	  	<result property="deptno" column="deptno"/>
 	  	-->
 	  	<id property="deptno" column="deptno"/> <!-- 기본키를 의미한다 -->
+	  	<association property="lvo" javaType="pm.vo.LocaVO" select="loca.get_loca" column="loc_code" />
+	  	
 	  	<collection property="e_list" javaType="java.util.List" ofType="pm.vo.EmpVO" select="emp.emp_list" column="deptno"/>
+	  	
 	  </resultMap>
   
   

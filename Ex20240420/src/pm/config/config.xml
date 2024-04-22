@@ -19,5 +19,6 @@
   <mappers>
     <mapper resource="pm/mapper/emp.xml"/>
     <mapper resource="pm/mapper/dept.xml"/>
+    <mapper resource="pm/mapper/loca.xml"/>
   </mappers>
 </configuration>

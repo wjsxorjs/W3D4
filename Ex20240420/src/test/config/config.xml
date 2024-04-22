@@ -17,8 +17,7 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="pm/mapper/emp.xml"/>
-    <mapper resource="pm/mapper/dept.xml"/>
-    <mapper resource="pm/mapper/loca.xml"/>
+    <mapper resource="test/mapper/emp.xml"/>
+    <mapper resource="test/mapper/mgr.xml"/>
   </mappers>
 </configuration>
