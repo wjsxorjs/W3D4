@@ -5,7 +5,7 @@
 <mapper namespace="emp">
 
 
-	<resultMap type="am.vo.EmpVo" id="m1">
+	<resultMap type="am.vo.EmpVO" id="m1">
 		<association property="dvo" javaType="am.vo.DeptVO" select="dept.get_dept" column="deptno" />
 	</resultMap>
 

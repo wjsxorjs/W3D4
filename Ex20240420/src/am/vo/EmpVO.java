@@ -7,7 +7,7 @@ public class EmpVO {
 	private String empno, ename, job, sal;
 	
 	// 부서정보를 의미하는 객
-	private DeptVo dvo;
+	private DeptVO dvo;
 	
 
 	public void setEmpno(String empno) {
@@ -26,7 +26,7 @@ public class EmpVO {
 		this.sal = sal;
 	}
 	
-	public void setDvo(DeptVo dvo) {
+	public void setDvo(DeptVO dvo) {
 		this.dvo = dvo;
 	}
 
@@ -48,7 +48,7 @@ public class EmpVO {
 		return sal;
 	}
 
-	public DeptVo getDvo() {
+	public DeptVO getDvo() {
 		return dvo;
 	}
 

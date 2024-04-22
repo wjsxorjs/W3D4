@@ -1,7 +1,8 @@
 package am.vo;
 
-public class DeptVo {
+public class DeptVO {
 	private String deptno, dname, loc_code;
+	private LocaVO lvo; 
 
 	public void setDeptno(String deptno) {
 		this.deptno = deptno;
@@ -13,6 +14,10 @@ public class DeptVo {
 
 	public void setLoc_code(String loc_code) {
 		this.loc_code = loc_code;
+	}
+
+	public void setLvo(LocaVO lvo) {
+		this.lvo = lvo;
 	}
 
 	
@@ -27,6 +32,10 @@ public class DeptVo {
 
 	public String getLoc_code() {
 		return loc_code;
+	}
+
+	public LocaVO getLvo() {
+		return lvo;
 	}
 	
 	
