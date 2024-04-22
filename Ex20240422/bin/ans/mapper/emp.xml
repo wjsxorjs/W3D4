@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="emp">
+  
+	  <resultMap type="ans.vo.EmpVO" id="mm">
+	  
+	  	<id property="empno" column="empno"/>
+	  	<collection property="e_list" ofType="ans.vo.EmpVO" select="emp.emp_list" column="empno"/>
+	  	
+	  </resultMap>
+  
+  
+	  	<!-- 모든 부서장을 반환한다. -->
+	  	<select id="mgr_list" resultMap="mm">
+	  		SELECT *
+			FROM emp
+			WHERE empno IN (SELECT distinct mgr
+							FROM emp)
+	  	</select>
+	  	
+	  	
+	  	<!-- 부서장의 사번을 인자로 받아서 사원들을 검색하는 기능 -->
+	  	<select id="emp_list" parameterType="String" resultType="ans.vo.EmpVO">
+	  		SELECT *
+			FROM emp
+			WHERE mgr = #{empno}
+	  	</select>
+	  	
+	  	
+	  	
+	  
+  </mapper>

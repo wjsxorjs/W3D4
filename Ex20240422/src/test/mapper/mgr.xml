@@ -17,8 +17,7 @@
 	  		SELECT *
 			FROM emp
 			WHERE empno IN (SELECT distinct mgr
-							FROM emp
-							Where mgr IS NOT NULL)
+							FROM emp)
 	  	</select>
 	  
   </mapper>
