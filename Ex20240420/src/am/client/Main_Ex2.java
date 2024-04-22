@@ -38,15 +38,32 @@ public class Main_Ex2 {
 			// 해당 부서의 도시정보 얻기
 			LocaVO lvo = dvo.getLvo();
 			
+//			System.out.printf("%6s | %7s | %10s | %8s | %7s | %12s | %9s | %11s \r\n", evo.getEmpno(),evo.getEname(),evo.getJob(),evo.getSal(),
+//																			dvo.getDeptno(),dvo.getDname(),
+//																			lvo.getLoc_code(),lvo.getCity());
+			
 			System.out.printf("%6s | %7s | %10s | %8s | %7s | %12s | %9s | %11s \r\n", evo.getEmpno(),evo.getEname(),evo.getJob(),evo.getSal(),
-																			dvo.getDeptno(),dvo.getDname(),
-																			lvo.getLoc_code(),lvo.getCity());
+					dvo.getDeptno(),dvo.getDname(),
+					lvo.getLoc_code(),lvo.getCity());
 		}
 		System.out.println("---------------------------------------------------------------------------------------------");
 		
+		
+		List<DeptVO> d_list = ss.selectList("dept.all");
+		
+		for(int i=0; i<d_list.size();i++) {
+			// 부서정보 얻기
+			DeptVO dvo = d_list.get(i);
+			// 해당 부서의 도시정보 얻기
+			LocaVO lvo = dvo.getLvo();
+			
+			System.out.printf("%6s | %-11s | %-8s  \r\n", 	dvo.getDeptno(), dvo.getDname(), lvo.getCity());
+		}
 		if(ss != null) {
 			ss.close();
 		}
+		
+		
 
 	}
 

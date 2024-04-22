@@ -4,13 +4,27 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dept">
 
+
 	<resultMap type="am.vo.DeptVO" id="m2">
 		<association property="lvo" javaType="am.vo.LocaVO" select="loca.get_loca" column="loc_code" />
 	</resultMap>
 
 
 	<!-- 각 사원의 부서코드를 인자로 받아서 해당 부서정보를 반환하는 기능 -->
-	<select id="get_dept" parameterType="String" resultMap="m2">
+	<select id="get_dept" parameterType="String" resultType="am.vo.DeptVO">
+	  	select *
+	  	from dept
+	  	where deptno = #{deptno}
+  	</select>
+  	
+  	<!--  -->
+  	<select id="all" parameterType="String" resultMap="m2">
+	  	select *
+	  	from dept
+  	</select>
+  	
+  	<!--  -->
+  	<select id="get_dept_loca" parameterType="String" resultMap="m2">
 	  	select *
 	  	from dept
 	  	where deptno = #{deptno}
